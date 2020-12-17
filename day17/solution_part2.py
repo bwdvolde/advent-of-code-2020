@@ -74,15 +74,11 @@ if __name__ == '__main__':
 
     cycles = 6
     for cycle in range(cycles):
-        to_remove = set()
-        to_add = set()
-
         to_check = active_cells | {neighbour for cell in active_cells for neighbour in neighbours(cell)}
 
-        to_add |= {cell for cell in to_check if cell not in active_cells and active_neighbours(cell) == 3}
-        to_remove |= {cell for cell in to_check if cell in active_cells and active_neighbours(cell) not in [2, 3]}
+        to_add = {cell for cell in to_check if cell not in active_cells and active_neighbours(cell) == 3}
+        to_remove = {cell for cell in to_check if cell in active_cells and active_neighbours(cell) not in [2, 3]}
 
-        assert not to_add & to_remove
         active_cells = (active_cells - to_remove) | to_add
 
-    print(f"Part 1: {len(active_cells)}")
+    print(f"Part 2: {len(active_cells)}")
