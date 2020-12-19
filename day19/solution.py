@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
     answer_part_2 = 0
     for i in range(1, 10):
-        regex = f"^{regex_part_42}+{regex_part_42}{{{i}}}({regex_part_31}){{{i}}}$"
+        regex = f"^{regex_part_42}{{{i + 1},}}({regex_part_31}){{{i}}}$"
         answer_part_2 += find_matches(regex)
 
     print(f"Part 2: {answer_part_2}")
